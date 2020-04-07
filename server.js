@@ -1,6 +1,8 @@
 const express = require('express')
 const cors = require('cors')
 
+const contactsRoute = require('./routes/routes.js')
+
 const server = express();
 
 server.use(cors())
@@ -12,5 +14,7 @@ server.options('*', cors())
 server.get('/', (req, res) => {
     res.status(200).json({message: 'testing get endpoint'})
 })
+
+server.use('/contacts', contactsRoute)
 
 module.exports = server
